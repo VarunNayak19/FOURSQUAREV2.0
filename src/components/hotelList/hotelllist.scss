@@ -1,0 +1,28 @@
+.listDiv {
+    width: 30%;
+    height: 100vh;
+    z-index: 1;
+    position: fixed;
+    background-color: #ffff;
+    padding-top: 60px;
+
+}
+
+.eachHotel {
+    background-color: #ffff;
+    width: 90%;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.hotelImage {
+    width: 100px;
+    height: 100px;
+}
+
+.hotelImg {
+    width: inherit;
+    height: inherit;
+}
