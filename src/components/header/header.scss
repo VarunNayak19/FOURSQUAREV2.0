@@ -44,12 +44,46 @@
                 border: none;
                 outline: none;
                 height: 23px;
-                opacity: 0.5;
+                // opacity: 0.5;
                 color: #000000;
                 font-family: Helvetica;
                 font-size: 19px;
                 letter-spacing: 0;
                 line-height: 23px;
+            }
+
+            .paginateddiv {
+                margin-left: 0px;
+                margin-top: -16px;
+                width: 600px;
+                border: none;
+                outline: none;
+                height: 23px;
+                color: #000000;
+                font-family: Helvetica;
+                font-size: 19px;
+                letter-spacing: 0;
+                line-height: 23px;
+            }
+
+            .css-1s2u09g-control,
+            .css-b62m3t-container,
+            .css-1f43avz-a11yText-A11yText,
+            .css-1f43avz-a11yText-A11yText,
+            .css-1s2u09g-control,
+            .css-319lph-ValueContainer,
+            .css-14el2xx-placeholder {
+                border: none !important;
+                outline: none !important;
+            }
+
+            .css-319lph-ValueContainer {
+                border: none;
+                outline: none;
+                margin: 2px;
+                height: 30px;
+                width: 400px;
+                background-color: transparent;
             }
         }
     }

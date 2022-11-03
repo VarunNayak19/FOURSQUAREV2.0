@@ -42,10 +42,40 @@
   border: none;
   outline: none;
   height: 23px;
-  opacity: 0.5;
   color: #000000;
   font-family: Helvetica;
   font-size: 19px;
   letter-spacing: 0;
   line-height: 23px;
+}
+.headerMainContent .bluediv .searchBar .paginateddiv {
+  margin-left: 0px;
+  margin-top: -16px;
+  width: 600px;
+  border: none;
+  outline: none;
+  height: 23px;
+  color: #000000;
+  font-family: Helvetica;
+  font-size: 19px;
+  letter-spacing: 0;
+  line-height: 23px;
+}
+.headerMainContent .bluediv .searchBar .css-1s2u09g-control,
+.headerMainContent .bluediv .searchBar .css-b62m3t-container,
+.headerMainContent .bluediv .searchBar .css-1f43avz-a11yText-A11yText,
+.headerMainContent .bluediv .searchBar .css-1f43avz-a11yText-A11yText,
+.headerMainContent .bluediv .searchBar .css-1s2u09g-control,
+.headerMainContent .bluediv .searchBar .css-319lph-ValueContainer,
+.headerMainContent .bluediv .searchBar .css-14el2xx-placeholder {
+  border: none !important;
+  outline: none !important;
+}
+.headerMainContent .bluediv .searchBar .css-319lph-ValueContainer {
+  border: none;
+  outline: none;
+  margin: 2px;
+  height: 30px;
+  width: 400px;
+  background-color: transparent;
 }/*# sourceMappingURL=header.css.map */

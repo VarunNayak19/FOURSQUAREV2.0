@@ -1,72 +1,75 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import './hotelllist.css'
-const HotelList = () => {
-    const hotelListArr: any = [
-        {
-            id: "1",
-            restaurantName: "Planet Cafe",
-            cuisine: "Sandwiches",
-            img: "indian-hotels",
-            address: "5.3 km Manipal, Karnataka ",
-            ratings: "8.3",
-            lat: 13.359441129794174,
-            lng: 74.7843856671331
+import { useNavigate } from "react-router-dom"
+const HotelList = ({ latlong }: any) => {
+    const navigate = useNavigate();
+    // const hotelListArr: any = [
+    //     {
+    //         id: "1",
+    //         restaurantName: "Planet Cafe",
+    //         cuisine: "Sandwiches",
+    //         img: "indian-hotels",
+    //         address: "5.3 km Manipal, Karnataka ",
+    //         ratings: "8.3",
+    //         lat: 13.359441129794174,
+    //         lng: 74.7843856671331
 
 
-        },
-        {
-            id: "2",
-            restaurantName: "LX Brasserie",
-            img: "indian-hotels",
-            cuisine: "Indian",
-            address: "Ramakrishna Lodge (Mosque Road), Udupi",
-            ratings: "7.0",
-            lat: 13.344270895681637,
-            lng: 74.7498317266539
+    //     },
+    //     {
+    //         id: "2",
+    //         restaurantName: "LX Brasserie",
+    //         img: "indian-hotels",
+    //         cuisine: "Indian",
+    //         address: "Ramakrishna Lodge (Mosque Road), Udupi",
+    //         ratings: "7.0",
+    //         lat: 13.344270895681637,
+    //         lng: 74.7498317266539
 
 
-        },
-        {
-            id: "3",
-            restaurantName: "hotel raj",
-            img: "indian-hotels",
-            cuisine: "Biriyani",
-            address: "Ramakrishna Lodge (Mosque Road), Udupi",
-            ratings: "4.0",
-            lat: 13.38119376752108,
-            lng: 74.73920614014705
+    //     },
+    //     {
+    //         id: "3",
+    //         restaurantName: "hotel raj",
+    //         img: "indian-hotels",
+    //         cuisine: "Biriyani",
+    //         address: "Ramakrishna Lodge (Mosque Road), Udupi",
+    //         ratings: "4.0",
+    //         lat: 13.38119376752108,
+    //         lng: 74.73920614014705
 
 
-        },
-        {
-            id: "4",
-            restaurantName: "Manipal inn",
-            img: "indian-hotels",
-            cuisine: "Multi",
-            address: "Ramakrishna Lodge (Mosque Road), Udupi",
-            ratings: "8.0",
-            lat: 13.350369268754815,
-            lng: 74.7367857113113
+    //     },
+    //     {
+    //         id: "4",
+    //         restaurantName: "Manipal inn",
+    //         img: "indian-hotels",
+    //         cuisine: "Multi",
+    //         address: "Ramakrishna Lodge (Mosque Road), Udupi",
+    //         ratings: "8.0",
+    //         lat: 13.350369268754815,
+    //         lng: 74.7367857113113
 
 
-        },
-        {
-            id: "5",
-            restaurantName: "kidiyoor",
-            img: "indian-hotels",
-            cuisine: "Multi",
-            address: "Ramakrishna Lodge (Mosque Road), Udupi",
-            ratings: "8.0",
-            lat: 13.34325014490527,
-            lng: 74.74660688023435
+    //     },
+    //     {
+    //         id: "5",
+    //         restaurantName: "kidiyoor",
+    //         img: "indian-hotels",
+    //         cuisine: "Multi",
+    //         address: "Ramakrishna Lodge (Mosque Road), Udupi",
+    //         ratings: "8.0",
+    //         lat: 13.34325014490527,
+    //         lng: 74.74660688023435
 
 
-        },
-    ];
+    //     },
+    // ];
+    // const [hoteldatabyplace, sethoteldatabyplace] = useState()
     const getData = async () => {
 
         const res = await fetch(
-            `https://developers.zomato.com/api/v2.1/geocode?lat=13.3409&lon=74.7421`,
+            `https://developers.zomato.com/api/v2.1/geocode?lat=${latlong.latgeodb}&lon=${latlong.longgeodb}`,
             {
                 headers: {
                     Accept: "application/json",
@@ -76,12 +79,20 @@ const HotelList = () => {
         )
             .then((response) => response.json())
             .then((data) => localStorage.setItem("restdatafromapi", JSON.stringify(data.nearby_restaurants)));
+
+        window.location.reload();
+    }
+    getData()
+    // console.log('hoteldatabyplace', hoteldatabyplace);
+    // localStorage.setItem("REST", JSON.stringify(hotelListArr));
+    const restapidets = JSON.parse(localStorage.getItem("restdatafromapi") || "[]")
+
+    // console.log('restapidets', restapidets);
+    // console.log("restapidets2", restapidets2);
+    const gotoreview = (i: any) => {
+        navigate(`/reviews/${i}`)
     }
 
-    getData()
-    localStorage.setItem("REST", JSON.stringify(hotelListArr));
-    const restapidets = JSON.parse(localStorage.getItem("restdatafromapi") || "[]")
-    console.log('restapidets', restapidets);
     const retData: any = JSON.parse(localStorage.getItem("REST") || "[]");
     return (
         // <div className="listDiv">
@@ -111,7 +122,7 @@ const HotelList = () => {
         <div className="listDiv">
             {restapidets.map((element: any, i: any) => {
                 return (
-                    <div className="eachHotel">
+                    <div className="eachHotel" onClick={() => gotoreview(i)}>
                         <div className="hotelImage">
                             <img
                                 src={restapidets[i].restaurant.thumb}
@@ -127,11 +138,12 @@ const HotelList = () => {
                             <p>{restapidets[i].restaurant.cuisines}</p>
                             <p>{restapidets[i].restaurant.location.address}</p>
                         </div>
-                        <div className="ratings">{restapidets[i].restaurant.name}</div>
+                        <div className="ratings">{restapidets[i].restaurant.user_rating.aggregate_rating}</div>
                     </div>
                 );
             })}
         </div>
+
     )
 }
 

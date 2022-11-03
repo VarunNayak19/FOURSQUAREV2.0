@@ -2,15 +2,17 @@ import { useState } from 'react'
 import './map.css'
 import { useNavigate } from "react-router-dom"
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import Header from '../header/header';
 // import {showPosition,showError} from 'geolocation'
 const Maps = () => {
     const [index, setindex] = useState(0)
     localStorage.setItem("index", index)
     const navigate = useNavigate();
+
     const { isLoaded } = useLoadScript({
         googlMapsApiKey: process.env.API_KEY
     })
-    var geolocation = require('geolocation')
+    // var geolocation = require('geolocation')
     const homeLat = 13.37919
     const homeLong = 74.74050
     const [lat, setlat] = useState(homeLat)

@@ -1,19 +1,22 @@
 .listDiv {
-  width: 30%;
-  height: 100vh;
+  width: 35%;
+  height: 100%;
   z-index: 1;
   position: fixed;
+  overflow-x: hidden;
   background-color: white;
   padding-top: 60px;
 }
 
 .eachHotel {
   background-color: white;
-  width: 90%;
+  width: 100%;
   height: auto;
   padding: 10px;
-  display: flex;
+  display: flex !important;
+  flex-direction: row;
   flex-wrap: wrap;
+  cursor: pointer;
 }
 
 .hotelImage {
